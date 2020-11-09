@@ -8,9 +8,8 @@ describe('CompaniesDashboardComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CompaniesDashboardComponent ]
-    })
-    .compileComponents();
+      declarations: [CompaniesDashboardComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {
