@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { StockMarketRoutingModule } from './stock-market-routing.module';
+import { CompaniesDashboardRoutingModule } from './companies-dashboard-routing.module';
 import { CompaniesDashboardComponent } from './companies-dashboard/companies-dashboard.component';
 
 
@@ -9,7 +9,7 @@ import { CompaniesDashboardComponent } from './companies-dashboard/companies-das
   declarations: [CompaniesDashboardComponent],
   imports: [
     CommonModule,
-    StockMarketRoutingModule
+    CompaniesDashboardRoutingModule
   ]
 })
-export class StockMarketModule { }
+export class CompaniesDashboardModule { }
