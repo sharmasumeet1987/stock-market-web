@@ -1,42 +1,37 @@
-<h1>
-    {{ title }}
-</h1>
 
-<!-- <button routerLink="/dashboard">Companies Dashboard</button>
-<button routerLink="/search">Search</button>
-<button routerLink="">Home</button>
-
-<router-outlet></router-outlet>
- -->
-<!-- 
-<button mat-button [matMenuTriggerFor]="menu">Menu</button>
-
-<mat-menu #menu="matMenu">
-  <button mat-menu-item routerLink="/dashboard">Companies Dashboard</button>
-  <button mat-menu-item>Item 2</button>
-</mat-menu>
-
-<router-outlet></router-outlet> -->
-
-<button
-    mat-icon-button
-    [matMenuTriggerFor]="menu"
-    aria-label="Example icon-button with a menu"
->
-    <mat-icon>menu</mat-icon>
-</button>
-<mat-menu #menu="matMenu">
-    <button mat-menu-item routerLink="/dashboard">
-        <mat-icon>analytics</mat-icon>
-        <span>Dashboard</span>
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+      
+        <button
+        mat-icon-button
+        [matMenuTriggerFor]="menu"
+        aria-label="Example icon-button with a menu"
+    >
+        <mat-icon>menu</mat-icon>
     </button>
-    <button mat-menu-item routerLink="/search">
-        <mat-icon>search</mat-icon>
-        <span>Check voice mail</span>
-    </button>
-    <button mat-menu-item>
-        <mat-icon>notifications_off</mat-icon>
-        <span>Disable alerts</span>
-    </button>
-</mat-menu>
+    <mat-menu #menu="matMenu">
+        <button mat-menu-item diabled>
+            <mat-icon>home</mat-icon>
+            <span></span>
+        </button>
+        <button mat-menu-item routerLink="/dashboard">
+            <mat-icon>analytics</mat-icon>
+            <span>Dashboard</span>
+        </button>
+        <button mat-menu-item routerLink="/search">
+            <mat-icon>search</mat-icon>
+            <span>Search</span>
+        </button>
+        <button mat-menu-item>
+            <mat-icon>notifications_off</mat-icon>
+            <span>Disable alerts</span>
+        </button>
+    </mat-menu>
+
+    <h1>
+        {{ title }}
+    </h1>
+    </mat-toolbar-row>
+</mat-toolbar>
+
 <router-outlet></router-outlet>
