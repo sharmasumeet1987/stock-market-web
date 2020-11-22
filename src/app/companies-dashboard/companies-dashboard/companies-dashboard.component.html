@@ -1,6 +1,296 @@
-<section>
-    <div class="example-button-row">
-      <button mat-raised-button color="warn">Display Data</button>
-    
-    </div>
-  </section>
+<div class="flex-container flex-center">
+    <mat-form-field>
+        <input
+            matInput
+            type="text"
+            (keyup)="doFilter($event.target.value)"
+            placeholder="Filter"
+        />
+    </mat-form-field>
+</div>
+<div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" matSort>
+        <ng-container matColumnDef="bseSymbol">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                <mat-icon>emoji_symbols</mat-icon>
+            </th>
+            <td mat-cell *matCellDef="let element">{{ element.bsesymbol }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="companyName">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+            <td mat-cell *matCellDef="let element">
+                {{ element.companyName }}
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="faceValue">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>FV</th>
+            <td mat-cell *matCellDef="let element">{{ element.faceValue }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="auditedYear">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>AY</th>
+            <td mat-cell *matCellDef="let element">
+                {{ element.auditedYear }}
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="currentEquity">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>CEq.</th>
+            <td mat-cell *matCellDef="let element">
+                {{ element.currentEquity | number: '1.2-2' }}
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="bookValue">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>BV</th>
+            <td mat-cell *matCellDef="let element">
+                {{ element.bookValue | number: '1.2-2' }}
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="sales">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>sales</th>
+            <td mat-cell *matCellDef="let element">
+                {{ element.sales | number: '1.2-2' }}
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="netProfit">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>NP</th>
+            <td mat-cell *matCellDef="let element">
+                {{ element.netProfit | number: '1.2-2' }}
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="eps">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>EPS</th>
+            <td mat-cell *matCellDef="let element">
+                {{ element.eps | number: '1.2-2' }}
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="dividend">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Div.</th>
+            <td mat-cell *matCellDef="let element">
+                {{ element.dividend | number: '1.2-2' }}
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="debtEquityRatio">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>D/E</th>
+            <td mat-cell *matCellDef="let element">
+                {{ element.debtEquityRatio | number: '1.2-2' }}
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="ronw">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>RONW</th>
+            <td mat-cell *matCellDef="let element">
+                {{ element.ronw | number: '1.2-2' }}
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="latQtrYear">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Year</th>
+            <td mat-cell *matCellDef="let element">{{ element.latQtrYear }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="latQtrSales">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Sales</th>
+            <td mat-cell *matCellDef="let element">
+                {{ element.latQtrSales | number: '1.2-2' }}
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="latQtrNetProfit">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>NP</th>
+            <td mat-cell *matCellDef="let element">
+                {{ element.latQtrNetProfit | number: '1.2-2' }}
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="y2dyearMonth">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Y/M</th>
+            <td mat-cell *matCellDef="let element">
+                {{ element.y2dyearMonth }}
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="y2dsales">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Sales</th>
+            <td mat-cell *matCellDef="let element">
+                {{ element.y2dsales | number: '1.2-2' }}
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="y2dsalesGrowth">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Sal(G)</th>
+            <td mat-cell *matCellDef="let element">
+                {{ element.y2dsalesGrowth | number: '1.2-2' }}
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="y2dnetProfit">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>NP</th>
+            <td mat-cell *matCellDef="let element">
+                {{ element.y2dnetProfit | number: '1.2-2' }}
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="y2dnetProfitGrowth">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>NP Gr.</th>
+            <td mat-cell *matCellDef="let element">
+                {{ element.y2dnetProfitGrowth | number: '1.2-2' }}
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="promoterHolding">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Pr(%)</th>
+            <td mat-cell *matCellDef="let element">
+                {{ element.promoterHolding | number: '1.2-2' }}
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="pledgedHolding">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Pl(%)</th>
+            <td mat-cell *matCellDef="let element">
+                {{ element.pledgedHolding | number: '1.2-2' }}
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="institutionalHolding">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Inst.(%)</th>
+            <td mat-cell *matCellDef="let element">
+                {{ element.institutionalHolding }}
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="noOfShareHolders">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>No(SH)</th>
+            <td mat-cell *matCellDef="let element">
+                {{ element.noOfShareHolders }}
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="marketCap">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Mar Cap</th>
+            <td mat-cell *matCellDef="let element">
+                {{ element.marketCap | number: '1.2-2' }}
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="price">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Price</th>
+            <td mat-cell *matCellDef="let element">
+                {{ element.price | number: '1.2-2' }}
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="fiftyTwoWeekHigh">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>52WH</th>
+            <td mat-cell *matCellDef="let element">
+                {{ element.fiftyTwoWeekHigh | number: '1.2-2' }}
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="fiftyTwoWeekLow">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>52WL</th>
+            <td mat-cell *matCellDef="let element">
+                {{ element.fiftyTwoWeekLow | number: '1.2-2' }}
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="enterpriseValue">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>EV</th>
+            <td mat-cell *matCellDef="let element">
+                {{ element.enterpriseValue | number: '1.2-2' }}
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="peratio">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>P/E</th>
+            <td mat-cell *matCellDef="let element">
+                {{ element.peratio | number: '1.2-2' }}
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="sectorName">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+            <td mat-cell *matCellDef="let element">
+                {{ element.sector.name }}
+            </td>
+        </ng-container>
+
+        <!-- Header row first group -->
+        <ng-container matColumnDef="header-row-first-group">
+            <th
+                mat-header-cell
+                *matHeaderCellDef
+                [style.text-align]="center"
+                [attr.colspan]="1"
+            >
+                BSE Symbol
+            </th>
+        </ng-container>
+
+        <!-- Header row second group -->
+        <ng-container matColumnDef="header-row-second-group">
+            <th mat-header-cell *matHeaderCellDef [attr.colspan]="1">
+                Company Name
+            </th>
+        </ng-container>
+
+        <ng-container matColumnDef="header-row-third-group">
+            <th mat-header-cell *matHeaderCellDef [attr.colspan]="10">
+                Audited
+            </th>
+        </ng-container>
+        <ng-container matColumnDef="header-row-fourth-group">
+            <th mat-header-cell *matHeaderCellDef [attr.colspan]="3">
+                Latest QTR
+            </th>
+        </ng-container>
+        <ng-container matColumnDef="header-row-fifth-group">
+            <th mat-header-cell *matHeaderCellDef [attr.colspan]="5">
+                Year to Date
+            </th>
+        </ng-container>
+        <ng-container matColumnDef="header-row-sixth-group">
+            <th mat-header-cell *matHeaderCellDef [attr.colspan]="4">
+                Shareholdings
+            </th>
+        </ng-container>
+        <ng-container matColumnDef="header-row-seventh-group">
+            <th mat-header-cell *matHeaderCellDef [attr.colspan]="6">
+                Market Related Data
+            </th>
+        </ng-container>
+
+        <ng-container matColumnDef="header-row-eighth-group">
+            <th mat-header-cell *matHeaderCellDef [attr.colspan]="1">Sector</th>
+        </ng-container>
+        <tr
+            mat-header-row
+            *matHeaderRowDef="[
+                'header-row-first-group',
+                'header-row-second-group',
+                'header-row-third-group',
+                'header-row-fourth-group',
+                'header-row-fifth-group',
+                'header-row-sixth-group',
+                'header-row-seventh-group',
+                'header-row-eighth-group'
+            ]"
+        ></tr>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+
+    <mat-paginator
+        [pageSizeOptions]="[5, 15, 25, 35, 50]"
+        showFirstLastButtons
+    ></mat-paginator>
+</div>
